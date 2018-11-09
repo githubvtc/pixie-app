@@ -1,2 +1,2 @@
 # pixie-app
-Pixie Applications
+Pixie App for fun
