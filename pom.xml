@@ -2,7 +2,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.vandy.main</groupId>
+	<groupId>com.pixie.main</groupId>
 	<artifactId>mainApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mainApp</name>
@@ -10,26 +10,16 @@
 
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.14.1</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>26.0-jre</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.14.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
@@ -38,33 +28,76 @@
 			<version>3.8</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.squareup/javapoet -->
+		<dependency>
+			<groupId>com.squareup</groupId>
+			<artifactId>javapoet</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+
 		<!-- Constraint library -->
 		<!-- <dependency> <groupId>org.choco-solver</groupId> <artifactId>choco-solver</artifactId> 
 			<version>4.0.8</version> </dependency> -->
 
 	</dependencies>
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.pixie.main.MainApp</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
+		<!-- <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
+			<version>3.2.1</version> <executions> <execution> <phase>package</phase> 
+			<goals> <goal>shade</goal> </goals> <configuration> <shadedArtifactAttached>true</shadedArtifactAttached> 
+			<transformers> <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
+			<mainClass>com.pixie.main.MainApp</mainClass> </transformer> </transformers> 
+			</configuration> </execution> </executions> </plugin> </plugins> -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.1</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>com.pixie.main.MainApp</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
